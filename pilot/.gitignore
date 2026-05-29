@@ -1,0 +1,8 @@
+env/
+__pycache__/
+*.pyc
+outputs/
+.DS_Store
+*.npz
+*.npy
+.ipynb_checkpoints/

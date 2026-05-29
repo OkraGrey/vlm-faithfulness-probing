@@ -1,0 +1,32 @@
+# Python virtual environment
+pilot/env/
+env/
+venv/
+.venv/
+
+# Heavy data/model files
+*.npz
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+*.h5
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# Claude Code internal directory
+.claude/
+
+# Jupyter
+.ipynb_checkpoints/
