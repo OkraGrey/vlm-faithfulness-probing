@@ -259,3 +259,123 @@ Rationale for keeping the 3 DiM-failure tasks: they passed selectivity (probe is
 1. **Should we tighten test_fraction?** Small wrong-test subsets (10-25 samples) produce wide CIs. K-fold cross-validation would tighten these without changing data quantity. Costs ~5x compute.
 2. **Should we report passes_gate1 with a more lenient DiM criterion?** As discussed above.
 3. **Are 2-5 tasks enough for a publishable paper?** For workshop / Findings, yes — "VLM internal grounding signal exists for specific perceptual tasks (Forensic_Detection, Object_Localization) but is not universal." For main track, probably not — needs 7B and OOD eval.
+
+---
+
+## Gate 0 — Honest re-confirmation under nested CV (2026-05-30)
+
+**Why this gate exists** (added during the 2026-05-30 literature refresh, see `06`): Gate 1 selected the best of 36 layers *by wrong-subset accuracy on a single 25% test split* (4–25 wrong-test samples), then reported that layer's CI uncorrected — a winner's-curse / selection-bias estimate (`05` Q2/Q3 flagged it). Gate 0 re-estimates honestly: **nested 5-fold CV** (layer chosen on inner folds of the outer-train only; pooled across outer folds every sample is predicted once, so the wrong-subset CI uses the FULL 20–111 wrong samples), with **difference-in-means as the primary probe** (D2 decision in `08`). Code: `pilot/gate0_cv.py` (self-test passes: recovers a planted signal layer, asserts no train/test leakage). Output: `pilot/outputs/gate0_cv_summary.json`.
+
+### Result — the Gate 1 headline does NOT survive
+
+| | Gate 1 (single split, logreg, best-by-wrong) | Gate 0 (nested CV, DiM primary) |
+|---|---|---|
+| Forensic_Detection | "PASS" L27, wrong-acc 0.517, CI [0.35,0.78] | **FAIL** — wrong-acc 0.182, CI [0.13,0.30] **below** majority 0.265, selectivity −0.046 |
+| Object_Localization | "PASS" L21, wrong-acc 0.781, CI [0.60,1.00] | **FAIL** — wrong-acc 0.291, CI [0.16,0.39] **below** majority 0.566, selectivity −0.200 |
+
+The inner-CV layer-selection histograms confirm the diagnosis: Object_Localization's "peak" scatters across L33/31/32/34/2/27/12/0/28/26/10 — there was no stable peak; L21 was a single-split artifact. **The "2/14 robust tasks" claim is retracted.**
+
+### The decomposition that replaces it — the probe reads OUTPUT, not gold, on most tasks
+
+Decisive diagnostic (`gate0_diag`, transient): on the wrong-output subset, what does the DiM prediction match — the gold answer (H1: "knows but says wrong") or the model's own parsed output (PAPO: internal state matches the wrong answer)?
+
+```
+task                        n_w  ->gold  ->output ->neither  reading
+Jigsaw                       80    1.00      0.00      0.00   GOLD (H1)
+Multi-view_Reasoning         70    0.91      0.09      0.00   GOLD (H1)
+Art_Style                    57    0.58      0.42      0.00   GOLD (H1, weak)
+Functional_Correspondence   101    0.27      0.16      0.57   mixed/noise
+IQ_Test                     111    0.40      0.05      0.55   mixed/noise
+Forensic_Detection           91    0.21      0.59      0.20   OUTPUT (PAPO)
+Object_Localization          57    0.26      0.74      0.00   OUTPUT (PAPO)
+Relative_Reflectance         77    0.25      0.53      0.22   OUTPUT (PAPO)
+Semantic_Correspondence      90    0.07      0.78      0.16   OUTPUT (PAPO)
+Visual_Correspondence       104    0.10      0.79      0.12   OUTPUT (PAPO)
+Counting / Relative_Depth / Spatial_Relation / Visual_Similarity
+                                   0.00      1.00      0.00   OUTPUT (PAPO)
+```
+
+**Interpretation:** the high "→output" fractions confirm the probe machinery is sound (the pre-generation hidden state strongly encodes the answer the model is about to emit). The scientific signal is in *which* tasks ALSO recover gold on wrong outputs:
+- **GOLD-reading (candidate H1): Jigsaw, Multi-view_Reasoning, Art_Style(weak).** Hidden state encodes the correct answer despite a wrong output → "sees but can't say."
+- **OUTPUT-reading (PAPO-consistent): 9 tasks.** Internal state matches the wrong output → no hidden correct grounding to recover; supports PAPO's premise for these tasks.
+
+This is consistent with Gate 1's raw DiM numbers (Object_Localization DiM 0.014; Jigsaw/Multi-view DiM 1.00) — Gate 1 only "failed" Jigsaw/Multi-view because logreg couldn't beat DiM (the `dim_gap` criterion `05` Q1 flagged as too strict). Making DiM primary (D2) vindicates that flag.
+
+### Decision
+
+1. **Retract the Forensic/Object_Localization headline.** They read output, not gold.
+2. **Carry Jigsaw, Multi-view_Reasoning, Art_Style into G3 (counterfactual image-swap construct validity).** These are the only GOLD-reading candidates.
+3. **Treat Jigsaw/Multi-view's ~1.0 with strong skepticism** — both binary; a 1.00 DiM is exactly what a non-visual question/format artifact would also produce. G3 is now load-bearing, not confirmatory: it decides whether the GOLD signal is visual or artifactual. If G3 shows the signal does not track the swapped image, the honest conclusion is "the apparent H1 signal on these tasks is a construct artifact" — a cautionary methods finding (still publishable).
+4. **The dominant story so far is PAPO-consistent** (9/14 tasks). Be honest that the project, run rigorously, currently *supports* PAPO more than it refutes it — pending G3 on the 3 candidates.
+
+---
+
+## Gate 3 — Construct validity (noise-image ablation), 2026-05-30
+
+**Question**: is the GOLD-reading signal on Jigsaw / Multi-view / Art_Style genuinely *visual*, or a question/format artifact (the worry raised by their suspiciously clean binary ~1.0)?
+
+**Method**: re-ran inference on the SAME samples with each image replaced by uniform RGB noise of the same size/count — text prompt and vision-token structure held identical, only image *content* changed (`pilot/run_inference_noise.py`, 400 samples, 0 errors, 833 s on Mac MPS). Then compared DiM nested-CV gold-recovery on the wrong-output subset: real-image vs noise-image (`pilot/gate3_construct.py`, output `gate3_construct_summary.json`). If the signal is visual, noise collapses gold-recovery to chance; if it's a text/format artifact, noise retains it. (This is the doc-04 vision-ablation idea, re-targeted to the correct tasks per Gate 0, and used as the load-bearing construct test because these tasks embed options in the image so a clean question-fixed image-swap isn't available — see `08` D1.)
+
+**Result** (wrong-output subset, binary tasks, 5-seed mean):
+
+```
+task                  majority  real gold-acc(wrong)  noise gold-acc(wrong)  visual_attr  verdict
+Jigsaw                  0.527    0.990 CI[1.00,1.00]   0.588 CI[0.41,0.64]      +0.402     VISUAL (H1 holds)
+Multi-view_Reasoning    0.556    0.934 CI[0.84,0.97]   0.511 CI[0.40,0.63]      +0.423     VISUAL (H1 holds)
+Art_Style               0.530    0.519 CI[0.46,0.70]   0.396 CI[0.32,0.56]      +0.123     inconclusive
+```
+
+**Interpretation**:
+- **Jigsaw and Multi-view_Reasoning: H1 CONFIRMED, construct-valid.** Real-image gold-recovery is ~0.93–0.99; replacing the image with noise collapses it to chance (≈ majority). The binary-artifact worry is *ruled out* — a format/text artifact would have survived noise. So the residual stream linearly encodes the *correct* answer, derived from the *image*, on examples where the model outputs the wrong answer. For these two tasks, Qwen2.5-VL-3B "sees but cannot say."
+- **Art_Style: dropped.** Real gold-recovery (0.519) is not clearly above majority (CI includes 0.530); the signal was weak to begin with. Not an H1 task.
+- Sanity check: under noise the model collapsed to a degenerate prior (e.g., always outputting "B" on Art_Style) — expected when no visual information is present.
+
+**Scope/limits to carry into the writeup**: (1) only 2/14 tasks — the effect is *task-specific*, not a general property; (2) both binary (the dissociation is easiest to detect there); (3) this is decodability + construct validity — **correlational**; it does NOT yet show the model *uses* the encoded direction (G4); (4) 3B only; generality (7B, other architectures) untested.
+
+**Decision**: H1 holds for Jigsaw and Multi-view_Reasoning. Carry exactly these two into **G4 (activation patching)** — the causal-usage test. Pre-register the knowledge–action-gap risk (2603.18353): the likely outcome is that the direction is encoded but only partially used.
+
+### Gate 3 ADDENDUM — layer profile forces a weaker claim (2026-05-30, same day)
+
+Before running G4 I computed the honest per-layer CV DiM gold-recovery profile (`layer_profile`, transient) for the two tasks. **This tempers the Gate 3 conclusion and must be reported honestly:**
+
+```
+Jigsaw       : gold-acc = 1.00 at EVERY layer L0..L34 (0.99 at L35)
+Multi-view   : gold-acc = 1.00 at L0-L1, ~0.91-0.99 across L2-L35
+```
+
+**Why this matters.** A genuine "the model visually *reasons* to the correct answer and then suppresses it" signal should **emerge with depth** (low in early layers, rising mid/late) — this is the pattern §1 of this log pre-registered as the expectation, and layer-0 dominance as the warning sign. A signal that is already perfect at **layer 0** (essentially the input/embedding representation) is the layer-0 artifact signature.
+
+**Reconciliation with Gate 3.** The noise-image ablation still holds — the signal *is* image-dependent (noise collapses it to chance), so it is not text/format leakage. But combined with the flat-from-L0 profile, the correct interpretation is: **the gold answer is linearly decodable from the image-conditioned representation from the earliest layer — a shallow/early visual feature, NOT evidence of deep internal reasoning that the decoder discards.**
+
+**Revised claim (honest):**
+- *Literal H1* ("the correct answer is linearly encoded from the image on wrong-output examples") — **holds** for these 2 binary tasks.
+- *Interpretive H1* ("the model internally computes the right answer through visual reasoning, then fails to express it") — **NOT supported**; the layer-0 dominance is more consistent with a shallow image cue (or a BLINK binary-item regularity) than with suppressed reasoning.
+- The dissociation (gold decodable at 100% from L0, yet the model is wrong ~50% of the time) is *suspiciously strong* and should be treated as a candidate artifact until G4 + an image-permutation control adjudicate.
+
+**Consequence for G4.** Intervene at a principled MID-layer (band L8–L24, CV-best within it; `gate4_patching.py` `INTERVENTION_BAND`), not at L0 — so any steering effect has downstream depth to propagate, and we avoid steering on the artifact-prone earliest layers. G4 is now doing double duty: (a) does amplifying the gold direction flip the output (causal usage)? and (b) implicitly, is the mid-layer gold direction real enough to be causal at all?
+
+**Honest headline as of now:** run rigorously, the project so far **supports PAPO for 9/14 tasks**, and for the 2 binary tasks where gold is decodable, the signal looks **shallow/early (possible artifact)** rather than deep grounding. H1's strong form is not yet supported. (An image-permutation control — re-extract with each question paired to a mismatched image — is the clean next artifact test if G4 is ambiguous.)
+
+## Gate 4 — Causal usage via DiM activation steering (2026-05-30)
+
+**Question**: does the model *use* the decodable gold direction, or is it encoded-but-inert? Code `pilot/gate4_patching.py` (validity check: baseline reproduces the wrong answer 100% of the time for both tasks — harness sound). Intervention at the CV-best mid-band layer (Jigsaw L8, Multi-view L13); steer the last prompt token's residual toward the gold class by α·(class-mean-difference), vs a random direction of identical magnitude; α ∈ {1,2,4}. Output `gate4_patching_summary.json`.
+
+**Result — flip-to-gold rate on the wrong subset:**
+
+```
+                       baseline  steer a1  steer a2  steer a4 | rand a1  rand a2  rand a4   n_wrong
+Jigsaw  (L8)             0.000     0.013     0.000     0.025  |  0.000    0.000    0.000      80
+Multi-view (L13)         0.000     0.014     0.014     0.129  |  0.014    0.014    0.014      70
+```
+
+**Interpretation — the direction is largely NOT causally used:**
+- **Jigsaw: causally inert.** Gold is decodable at 1.00, yet steering along that exact direction — even at 4× the class separation — flips only 2/80 outputs (2.5%), barely above the random control (0%). The model's output is almost completely insensitive to the direction it supposedly "encodes."
+- **Multi-view: weak, high-magnitude-only effect.** At α=4, steering flips 9/70 (12.9%) vs 1/70 (1.4%) for random — a real but small effect that appears only under a large, likely off-manifold push; at realistic magnitudes (α=1,2) it is indistinguishable from random. That random doesn't flip to gold confirms the model is generally perturbation-robust and the gold direction has at most weak causal pull.
+
+**This is the "encoded but not used" / knowledge–action gap outcome** pre-registered as likely (arXiv:2603.18353). Combined with the flat-from-L0 profile (Gate 3 addendum), the three gates together give a coherent, honest conclusion for Qwen2.5-VL-**3B** on BLINK:
+
+> The apparent internal "knowledge" of the correct answer on the wrong-output subset is (a) restricted to a small set of (binary) tasks, (b) shallow/early rather than emergent-with-depth, and (c) **causally inert or near-inert** — the model does not "see but fail to say." H1's strong form is **rejected at 3B**. The result is broadly **consistent with PAPO's premise** that the fix must target the model's use of perception, not merely its internal representation.
+
+**Limitations of G4 (state honestly):** single mid-layer per task; DiM-steering at the last prompt token only (a stronger test — multi-site patching or correct-donor interchange — could reveal more, and the Multi-view α=4 effect shows the method *can* flip some outputs, so the near-null is a genuine small effect, not a broken intervention).
+
+**Decision → scale to 7B.** The 3B study is now complete and gives a clean (H1-negative) result. The natural and well-motivated next experiment is **Qwen2.5-VL-7B** (runs locally on the user's 48GB M5 Pro). This is NOT to rescue the hypothesis — it is the necessary scale test, because the most plausible reason a 3B shows no usable grounding is that a 3B may genuinely lack it. The decisive 7B diagnostics: (1) does the gold-signal layer profile **emerge with depth** (genuine grounding) instead of being flat-from-L0? (2) is the steered causal effect **larger** at 7B? A 7B that also shows shallow + inert signal would make the H1-negative robust across scale; a 7B that shows emergent-with-depth + causally-usable grounding would revive H1 and become the headline. Either is publishable. (Optional, cheap, on 3B: the image-permutation control to characterize *what* the inert decodable signal is — now lower priority since G4 shows it's inert regardless of source.)

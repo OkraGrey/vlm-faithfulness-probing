@@ -1,6 +1,26 @@
+# Briefing — 2026-05-30 (literature refresh + Gate 0)
+
+> **Read this first.** It supersedes the 2026-05-18 briefing below for "where we are."
+
+**Three things happened on 2026-05-30:**
+
+1. **Literature refresh** (full detail in `06`, survey in `07`, alternatives in `08`). The user dropped arXiv:2604.02486 ("VLMs Need Words" — *not* PAPO). The "encoded-but-not-expressed" *phenomenon* is now established in the 2025–26 literature (esp. Fu et al. 2025, arXiv:2506.08008). **Our novelty is no longer the phenomenon — it's the rigorous causal-probing method on the wrong-output subset, BLINK, Qwen2.5-VL, framed as a PAPO rebuttal.** Two methodology changes locked: construct validity via **counterfactual image-swap** (not just blank-image); causal test via **activation patching** (INLP demoted — Kumar et al. 2022).
+
+2. **Gate 0 (new): honest re-analysis under nested CV.** Code `pilot/gate0_cv.py`. **The Gate 1 headline is retracted** — Forensic_Detection and Object_Localization do NOT survive honest layer selection (their signal was a winner's curse on 15–23 test samples; they actually read the model's *output*, not gold). Full record in `03` §"Gate 0".
+
+3. **The corrected picture:** on the wrong-output subset the probe reads the model's *own wrong output* for **9/14 tasks (PAPO-consistent)**, and reads **gold** only for **Jigsaw, Multi-view_Reasoning, Art_Style(weak)** — the candidate "sees but can't say" tasks. **But Jigsaw/Multi-view are binary and hit ~1.0, which is suspiciously clean** — could be a non-visual artifact.
+
+**G3 DONE (2026-05-30): H1 confirmed and construct-valid for 2 tasks.** Noise-image ablation (`pilot/run_inference_noise.py` + `gate3_construct.py`, see `03` §Gate 3): on Jigsaw and Multi-view_Reasoning, real-image gold-recovery on the wrong-output subset is 0.99 / 0.93 and **collapses to chance (~majority) under noise** → the signal is genuinely visual, not a binary/format artifact. Art_Style dropped (real signal ≈ chance). So: **the "sees but can't say" effect is REAL but task-specific (2/14); the other 9 tasks remain PAPO-consistent.**
+
+**G4 DONE (2026-05-30): the encoded direction is causally INERT — H1's strong form is REJECTED at 3B.** DiM steering toward gold (vs random control) at the mid-band layer flips almost no wrong outputs: Jigsaw 2.5% at α=4 (vs 0% random) — inert; Multi-view 12.9% at α=4 (vs 1.4% random) — weak, high-magnitude-only. See `03` §Gate 4. Combined with the flat-from-L0 profile: the apparent "knowledge" is shallow, task-specific, and not used → **the model does NOT "see but fail to say" at 3B; result is consistent with PAPO's premise.**
+
+**THE 3B STUDY IS COMPLETE (and gives a clean H1-negative result).** What's next: **scale to Qwen2.5-VL-7B** — runs locally on the user's 48GB M5 Pro (no cluster needed). This is the principled scale test, not a rescue attempt: a 3B may simply lack usable grounding. Decisive 7B diagnostics: (1) does the gold-signal LAYER PROFILE emerge-with-depth (genuine grounding) vs flat-from-L0 (artifact, as at 3B)? (2) is the steered causal effect larger at 7B? 7B-negative → robust H1-negative across scale; 7B-positive (emergent + causally usable) → revives H1 as the headline. Either is publishable. Prep: pipeline is ~one-line portable (config.MODEL_NAME); add ViT/merger hooks (HALP: strongest Qwen2.5-VL signal is in visual features). Lower-priority optional: 3B image-permutation control to characterize the inert signal.
+
+---
+
 # Morning Briefing — 2026-05-18 (end-of-day)
 
-> **Purpose**: Pick-up-cold summary. After reading this, you should know exactly where we are, what the open decision is, and what I recommend doing next.
+> **Purpose**: Pick-up-cold summary. After reading this, you should know exactly where we are, what the open decision is, and what I recommend doing next. **(Superseded by the 2026-05-30 briefing above — kept for history.)**
 
 ## Where we are
 
