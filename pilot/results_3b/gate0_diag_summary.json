@@ -1,0 +1,128 @@
+[
+  {
+    "task": "Jigsaw",
+    "n_wrong": 80,
+    "options": 2,
+    "frac_to_gold": 0.99,
+    "frac_to_output": 0.01,
+    "frac_to_neither": 0.0,
+    "reading": "GOLD (H1, strong)"
+  },
+  {
+    "task": "Multi-view_Reasoning",
+    "n_wrong": 70,
+    "options": 2,
+    "frac_to_gold": 0.934,
+    "frac_to_output": 0.066,
+    "frac_to_neither": 0.0,
+    "reading": "GOLD (H1, strong)"
+  },
+  {
+    "task": "Art_Style",
+    "n_wrong": 57,
+    "options": 2,
+    "frac_to_gold": 0.519,
+    "frac_to_output": 0.481,
+    "frac_to_neither": 0.0,
+    "reading": "mixed/noise"
+  },
+  {
+    "task": "IQ_Test",
+    "n_wrong": 111,
+    "options": 4,
+    "frac_to_gold": 0.368,
+    "frac_to_output": 0.103,
+    "frac_to_neither": 0.53,
+    "reading": "mixed/noise"
+  },
+  {
+    "task": "Functional_Correspondence",
+    "n_wrong": 101,
+    "options": 4,
+    "frac_to_gold": 0.293,
+    "frac_to_output": 0.15,
+    "frac_to_neither": 0.556,
+    "reading": "mixed/noise"
+  },
+  {
+    "task": "Object_Localization",
+    "n_wrong": 57,
+    "options": 2,
+    "frac_to_gold": 0.291,
+    "frac_to_output": 0.709,
+    "frac_to_neither": 0.0,
+    "reading": "OUTPUT (PAPO)"
+  },
+  {
+    "task": "Relative_Reflectance",
+    "n_wrong": 77,
+    "options": 3,
+    "frac_to_gold": 0.213,
+    "frac_to_output": 0.558,
+    "frac_to_neither": 0.229,
+    "reading": "OUTPUT (PAPO)"
+  },
+  {
+    "task": "Forensic_Detection",
+    "n_wrong": 91,
+    "options": 4,
+    "frac_to_gold": 0.182,
+    "frac_to_output": 0.622,
+    "frac_to_neither": 0.196,
+    "reading": "OUTPUT (PAPO)"
+  },
+  {
+    "task": "Visual_Correspondence",
+    "n_wrong": 104,
+    "options": 4,
+    "frac_to_gold": 0.115,
+    "frac_to_output": 0.742,
+    "frac_to_neither": 0.142,
+    "reading": "OUTPUT (PAPO)"
+  },
+  {
+    "task": "Semantic_Correspondence",
+    "n_wrong": 90,
+    "options": 4,
+    "frac_to_gold": 0.067,
+    "frac_to_output": 0.762,
+    "frac_to_neither": 0.171,
+    "reading": "OUTPUT (PAPO)"
+  },
+  {
+    "task": "Counting",
+    "n_wrong": 41,
+    "options": 4,
+    "frac_to_gold": 0.0,
+    "frac_to_output": 1.0,
+    "frac_to_neither": 0.0,
+    "reading": "OUTPUT (PAPO)"
+  },
+  {
+    "task": "Relative_Depth",
+    "n_wrong": 36,
+    "options": 2,
+    "frac_to_gold": 0.0,
+    "frac_to_output": 1.0,
+    "frac_to_neither": 0.0,
+    "reading": "OUTPUT (PAPO)"
+  },
+  {
+    "task": "Spatial_Relation",
+    "n_wrong": 20,
+    "options": 2,
+    "frac_to_gold": 0.0,
+    "frac_to_output": 1.0,
+    "frac_to_neither": 0.0,
+    "reading": "OUTPUT (PAPO)"
+  },
+  {
+    "task": "Visual_Similarity",
+    "n_wrong": 54,
+    "options": 2,
+    "frac_to_gold": 0.0,
+    "frac_to_output": 1.0,
+    "frac_to_neither": 0.0,
+    "reading": "OUTPUT (PAPO)"
+  }
+]

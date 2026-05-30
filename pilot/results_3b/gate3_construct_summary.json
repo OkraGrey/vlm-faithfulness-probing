@@ -1,0 +1,56 @@
+[
+  {
+    "task": "Jigsaw",
+    "n": 150,
+    "n_wrong": 80,
+    "majority": 0.5266666666666666,
+    "real_gold_acc_wrong": 0.99,
+    "real_ci": [
+      1.0,
+      1.0
+    ],
+    "noise_gold_acc_wrong": 0.5875,
+    "noise_ci": [
+      0.4125,
+      0.6375
+    ],
+    "visual_attribution": 0.40249999999999997,
+    "verdict": "VISUAL (H1 holds)"
+  },
+  {
+    "task": "Multi-view_Reasoning",
+    "n": 133,
+    "n_wrong": 70,
+    "majority": 0.556390977443609,
+    "real_gold_acc_wrong": 0.9342857142857144,
+    "real_ci": [
+      0.8428571428571429,
+      0.9714285714285714
+    ],
+    "noise_gold_acc_wrong": 0.5114285714285713,
+    "noise_ci": [
+      0.4,
+      0.6285714285714286
+    ],
+    "visual_attribution": 0.42285714285714304,
+    "verdict": "VISUAL (H1 holds)"
+  },
+  {
+    "task": "Art_Style",
+    "n": 117,
+    "n_wrong": 57,
+    "majority": 0.5299145299145299,
+    "real_gold_acc_wrong": 0.519298245614035,
+    "real_ci": [
+      0.45614035087719296,
+      0.7017543859649122
+    ],
+    "noise_gold_acc_wrong": 0.3964912280701754,
+    "noise_ci": [
+      0.3157894736842105,
+      0.5614035087719298
+    ],
+    "visual_attribution": 0.12280701754385964,
+    "verdict": "PARTIAL / inconclusive"
+  }
+]

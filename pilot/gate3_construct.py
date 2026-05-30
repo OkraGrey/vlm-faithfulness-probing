@@ -15,6 +15,7 @@ Decision (per task):
 Run AFTER run_inference_noise.py finishes:  ./env/bin/python gate3_construct.py
 """
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -23,7 +24,9 @@ from sklearn.preprocessing import LabelEncoder
 import config
 import gate0_cv as g
 
-CANDIDATE_TASKS = ["Jigsaw", "Multi-view_Reasoning", "Art_Style"]
+# Default = 3B GOLD-reading candidates; override: export CANDIDATE_TASKS="taskA,taskB"
+CANDIDATE_TASKS = os.environ.get(
+    "CANDIDATE_TASKS", "Jigsaw,Multi-view_Reasoning,Art_Style").split(",")
 NOISE_DIR = config.OUTPUTS_DIR / "inference_noise"
 REAL_DIR = config.INFERENCE_DIR
 SEEDS = [0, 1, 2, 3, 4]

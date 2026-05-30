@@ -1,0 +1,382 @@
+[
+  {
+    "task": "Jigsaw",
+    "n_wrong": 80,
+    "majority": 0.527,
+    "gold_acc_L0": 1.0,
+    "gold_acc_max": 1.0,
+    "emerges_with_depth": false,
+    "profile": [
+      {
+        "layer": 0,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 1,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 2,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 3,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 4,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 5,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 6,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 7,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 8,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 9,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 10,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 11,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 12,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 13,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 14,
+        "gold_acc_wrong": 0.997,
+        "sd": 0.005
+      },
+      {
+        "layer": 15,
+        "gold_acc_wrong": 0.997,
+        "sd": 0.005
+      },
+      {
+        "layer": 16,
+        "gold_acc_wrong": 0.997,
+        "sd": 0.005
+      },
+      {
+        "layer": 17,
+        "gold_acc_wrong": 0.997,
+        "sd": 0.005
+      },
+      {
+        "layer": 18,
+        "gold_acc_wrong": 0.997,
+        "sd": 0.005
+      },
+      {
+        "layer": 19,
+        "gold_acc_wrong": 0.997,
+        "sd": 0.005
+      },
+      {
+        "layer": 20,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 21,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 22,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 23,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 24,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 25,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 26,
+        "gold_acc_wrong": 0.997,
+        "sd": 0.005
+      },
+      {
+        "layer": 27,
+        "gold_acc_wrong": 0.995,
+        "sd": 0.01
+      },
+      {
+        "layer": 28,
+        "gold_acc_wrong": 0.995,
+        "sd": 0.01
+      },
+      {
+        "layer": 29,
+        "gold_acc_wrong": 0.993,
+        "sd": 0.01
+      },
+      {
+        "layer": 30,
+        "gold_acc_wrong": 0.995,
+        "sd": 0.01
+      },
+      {
+        "layer": 31,
+        "gold_acc_wrong": 0.997,
+        "sd": 0.005
+      },
+      {
+        "layer": 32,
+        "gold_acc_wrong": 0.995,
+        "sd": 0.01
+      },
+      {
+        "layer": 33,
+        "gold_acc_wrong": 0.99,
+        "sd": 0.009
+      },
+      {
+        "layer": 34,
+        "gold_acc_wrong": 0.99,
+        "sd": 0.009
+      },
+      {
+        "layer": 35,
+        "gold_acc_wrong": 0.985,
+        "sd": 0.005
+      }
+    ]
+  },
+  {
+    "task": "Multi-view_Reasoning",
+    "n_wrong": 70,
+    "majority": 0.556,
+    "gold_acc_L0": 1.0,
+    "gold_acc_max": 1.0,
+    "emerges_with_depth": false,
+    "profile": [
+      {
+        "layer": 0,
+        "gold_acc_wrong": 1.0,
+        "sd": 0.0
+      },
+      {
+        "layer": 1,
+        "gold_acc_wrong": 0.986,
+        "sd": 0.029
+      },
+      {
+        "layer": 2,
+        "gold_acc_wrong": 0.943,
+        "sd": 0.069
+      },
+      {
+        "layer": 3,
+        "gold_acc_wrong": 0.943,
+        "sd": 0.072
+      },
+      {
+        "layer": 4,
+        "gold_acc_wrong": 0.943,
+        "sd": 0.079
+      },
+      {
+        "layer": 5,
+        "gold_acc_wrong": 0.946,
+        "sd": 0.078
+      },
+      {
+        "layer": 6,
+        "gold_acc_wrong": 0.943,
+        "sd": 0.079
+      },
+      {
+        "layer": 7,
+        "gold_acc_wrong": 0.946,
+        "sd": 0.078
+      },
+      {
+        "layer": 8,
+        "gold_acc_wrong": 0.946,
+        "sd": 0.074
+      },
+      {
+        "layer": 9,
+        "gold_acc_wrong": 0.957,
+        "sd": 0.054
+      },
+      {
+        "layer": 10,
+        "gold_acc_wrong": 0.954,
+        "sd": 0.049
+      },
+      {
+        "layer": 11,
+        "gold_acc_wrong": 0.966,
+        "sd": 0.043
+      },
+      {
+        "layer": 12,
+        "gold_acc_wrong": 0.957,
+        "sd": 0.05
+      },
+      {
+        "layer": 13,
+        "gold_acc_wrong": 0.974,
+        "sd": 0.045
+      },
+      {
+        "layer": 14,
+        "gold_acc_wrong": 0.98,
+        "sd": 0.033
+      },
+      {
+        "layer": 15,
+        "gold_acc_wrong": 0.977,
+        "sd": 0.039
+      },
+      {
+        "layer": 16,
+        "gold_acc_wrong": 0.977,
+        "sd": 0.033
+      },
+      {
+        "layer": 17,
+        "gold_acc_wrong": 0.977,
+        "sd": 0.039
+      },
+      {
+        "layer": 18,
+        "gold_acc_wrong": 0.977,
+        "sd": 0.039
+      },
+      {
+        "layer": 19,
+        "gold_acc_wrong": 0.983,
+        "sd": 0.028
+      },
+      {
+        "layer": 20,
+        "gold_acc_wrong": 0.977,
+        "sd": 0.029
+      },
+      {
+        "layer": 21,
+        "gold_acc_wrong": 0.974,
+        "sd": 0.039
+      },
+      {
+        "layer": 22,
+        "gold_acc_wrong": 0.989,
+        "sd": 0.014
+      },
+      {
+        "layer": 23,
+        "gold_acc_wrong": 0.98,
+        "sd": 0.028
+      },
+      {
+        "layer": 24,
+        "gold_acc_wrong": 0.974,
+        "sd": 0.023
+      },
+      {
+        "layer": 25,
+        "gold_acc_wrong": 0.974,
+        "sd": 0.034
+      },
+      {
+        "layer": 26,
+        "gold_acc_wrong": 0.966,
+        "sd": 0.043
+      },
+      {
+        "layer": 27,
+        "gold_acc_wrong": 0.954,
+        "sd": 0.045
+      },
+      {
+        "layer": 28,
+        "gold_acc_wrong": 0.943,
+        "sd": 0.048
+      },
+      {
+        "layer": 29,
+        "gold_acc_wrong": 0.937,
+        "sd": 0.049
+      },
+      {
+        "layer": 30,
+        "gold_acc_wrong": 0.94,
+        "sd": 0.048
+      },
+      {
+        "layer": 31,
+        "gold_acc_wrong": 0.96,
+        "sd": 0.038
+      },
+      {
+        "layer": 32,
+        "gold_acc_wrong": 0.957,
+        "sd": 0.035
+      },
+      {
+        "layer": 33,
+        "gold_acc_wrong": 0.923,
+        "sd": 0.055
+      },
+      {
+        "layer": 34,
+        "gold_acc_wrong": 0.917,
+        "sd": 0.052
+      },
+      {
+        "layer": 35,
+        "gold_acc_wrong": 0.92,
+        "sd": 0.047
+      }
+    ]
+  }
+]

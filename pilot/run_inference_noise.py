@@ -15,6 +15,7 @@ Art_Style). Resumable: skips samples already saved to outputs/inference_noise/.
 Run: ./env/bin/python run_inference_noise.py
 """
 import json
+import os
 import time
 import traceback
 from pathlib import Path
@@ -27,7 +28,10 @@ from data_loader import load_blink_multi
 from model_setup import load_model_and_processor, run_single
 from answer_parser import parse_answer, is_correct
 
-CANDIDATE_TASKS = ["Jigsaw", "Multi-view_Reasoning", "Art_Style"]
+# Default = the 3B GOLD-reading candidates. Override per model:
+#   export CANDIDATE_TASKS="Jigsaw,Multi-view_Reasoning,Art_Style"
+CANDIDATE_TASKS = os.environ.get(
+    "CANDIDATE_TASKS", "Jigsaw,Multi-view_Reasoning,Art_Style").split(",")
 NOISE_DIR = config.OUTPUTS_DIR / "inference_noise"
 NOISE_SEED = 12345
 

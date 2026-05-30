@@ -1,0 +1,608 @@
+[
+  {
+    "task": "Art_Style",
+    "n": 117,
+    "n_wrong": 57,
+    "majority": 0.5299145299145299,
+    "dim_wrong_acc_mean": 0.519298245614035,
+    "dim_wrong_acc_std": 0.06137844099837159,
+    "dim_wrong_ci": [
+      0.45614035087719296,
+      0.7017543859649122
+    ],
+    "dim_all_acc_mean": 0.5692307692307692,
+    "lr_wrong_acc_mean": 0.6210526315789474,
+    "lr_wrong_ci": [
+      0.5789473684210527,
+      0.8245614035087719
+    ],
+    "selectivity_wrong_mean": 0.003508771929824561,
+    "selected_layer_hist": {
+      "28": 6,
+      "30": 4,
+      "29": 4,
+      "26": 3,
+      "35": 2,
+      "32": 2,
+      "34": 2,
+      "31": 1,
+      "33": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 34,
+      "dim_wrong_acc": 0.5789473684210527,
+      "lr_wrong_acc": 0.6842105263157895,
+      "dim_wrong_ci": [
+        0.45614035087719296,
+        0.7017543859649122
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "Counting",
+    "n": 120,
+    "n_wrong": 41,
+    "majority": 0.25833333333333336,
+    "dim_wrong_acc_mean": 0.0,
+    "dim_wrong_acc_std": 0.0,
+    "dim_wrong_ci": [
+      0.0,
+      0.0
+    ],
+    "dim_all_acc_mean": 0.6583333333333333,
+    "lr_wrong_acc_mean": 0.11219512195121953,
+    "lr_wrong_ci": [
+      0.024390243902439025,
+      0.21951219512195122
+    ],
+    "selectivity_wrong_mean": -0.2195121951219512,
+    "selected_layer_hist": {
+      "0": 24,
+      "28": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 2,
+      "dim_wrong_acc": 0.0,
+      "lr_wrong_acc": 0.12195121951219512,
+      "dim_wrong_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "Forensic_Detection",
+    "n": 132,
+    "n_wrong": 91,
+    "majority": 0.26515151515151514,
+    "dim_wrong_acc_mean": 0.1824175824175824,
+    "dim_wrong_acc_std": 0.0330402118205998,
+    "dim_wrong_ci": [
+      0.13186813186813187,
+      0.2967032967032967
+    ],
+    "dim_all_acc_mean": 0.32878787878787874,
+    "lr_wrong_acc_mean": 0.41098901098901097,
+    "lr_wrong_ci": [
+      0.27472527472527475,
+      0.4725274725274725
+    ],
+    "selectivity_wrong_mean": -0.046153846153846156,
+    "selected_layer_hist": {
+      "28": 5,
+      "35": 4,
+      "29": 4,
+      "27": 3,
+      "0": 2,
+      "26": 2,
+      "24": 2,
+      "8": 1,
+      "31": 1,
+      "2": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 27,
+      "dim_wrong_acc": 0.2087912087912088,
+      "lr_wrong_acc": 0.45054945054945056,
+      "dim_wrong_ci": [
+        0.13186813186813187,
+        0.2967032967032967
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "Functional_Correspondence",
+    "n": 130,
+    "n_wrong": 101,
+    "majority": 0.33076923076923076,
+    "dim_wrong_acc_mean": 0.2930693069306931,
+    "dim_wrong_acc_std": 0.026270295369151684,
+    "dim_wrong_ci": [
+      0.18811881188118812,
+      0.3564356435643564
+    ],
+    "dim_all_acc_mean": 0.24923076923076923,
+    "lr_wrong_acc_mean": 0.3722772277227723,
+    "lr_wrong_ci": [
+      0.2079207920792079,
+      0.38613861386138615
+    ],
+    "selectivity_wrong_mean": 0.07524752475247524,
+    "selected_layer_hist": {
+      "23": 6,
+      "9": 3,
+      "21": 3,
+      "33": 2,
+      "35": 2,
+      "14": 2,
+      "31": 2,
+      "25": 1,
+      "11": 1,
+      "29": 1,
+      "20": 1,
+      "12": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 25,
+      "dim_wrong_acc": 0.32673267326732675,
+      "lr_wrong_acc": 0.39603960396039606,
+      "dim_wrong_ci": [
+        0.2376237623762376,
+        0.4158415841584158
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "IQ_Test",
+    "n": 150,
+    "n_wrong": 111,
+    "majority": 0.26666666666666666,
+    "dim_wrong_acc_mean": 0.36756756756756753,
+    "dim_wrong_acc_std": 0.030894465224292338,
+    "dim_wrong_ci": [
+      0.3063063063063063,
+      0.4864864864864865
+    ],
+    "dim_all_acc_mean": 0.2866666666666666,
+    "lr_wrong_acc_mean": 0.2648648648648648,
+    "lr_wrong_ci": [
+      0.21621621621621623,
+      0.38738738738738737
+    ],
+    "selectivity_wrong_mean": 0.12972972972972974,
+    "selected_layer_hist": {
+      "0": 8,
+      "8": 3,
+      "32": 2,
+      "18": 1,
+      "6": 1,
+      "12": 1,
+      "24": 1,
+      "16": 1,
+      "17": 1,
+      "21": 1,
+      "26": 1,
+      "30": 1,
+      "10": 1,
+      "20": 1,
+      "4": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 4,
+      "dim_wrong_acc": 0.3963963963963964,
+      "lr_wrong_acc": 0.3153153153153153,
+      "dim_wrong_ci": [
+        0.3063063063063063,
+        0.4864864864864865
+      ]
+    },
+    "selectivity_pass": true,
+    "ci_excludes_majority": true,
+    "passes_gate0": true
+  },
+  {
+    "task": "Jigsaw",
+    "n": 150,
+    "n_wrong": 80,
+    "majority": 0.5266666666666666,
+    "dim_wrong_acc_mean": 0.99,
+    "dim_wrong_acc_std": 0.009354143466934856,
+    "dim_wrong_ci": [
+      1.0,
+      1.0
+    ],
+    "dim_all_acc_mean": 0.532,
+    "lr_wrong_acc_mean": 0.6575,
+    "lr_wrong_ci": [
+      0.5,
+      0.7125
+    ],
+    "selectivity_wrong_mean": 0.465,
+    "selected_layer_hist": {
+      "35": 4,
+      "33": 4,
+      "28": 3,
+      "30": 2,
+      "0": 2,
+      "26": 2,
+      "4": 2,
+      "5": 1,
+      "34": 1,
+      "19": 1,
+      "20": 1,
+      "3": 1,
+      "22": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 19,
+      "dim_wrong_acc": 1.0,
+      "lr_wrong_acc": 0.6125,
+      "dim_wrong_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    "selectivity_pass": true,
+    "ci_excludes_majority": true,
+    "passes_gate0": true
+  },
+  {
+    "task": "Multi-view_Reasoning",
+    "n": 133,
+    "n_wrong": 70,
+    "majority": 0.556390977443609,
+    "dim_wrong_acc_mean": 0.9342857142857144,
+    "dim_wrong_acc_std": 0.06857142857142857,
+    "dim_wrong_ci": [
+      0.8428571428571429,
+      0.9714285714285714
+    ],
+    "dim_all_acc_mean": 0.5007518796992481,
+    "lr_wrong_acc_mean": 0.5457142857142857,
+    "lr_wrong_ci": [
+      0.4714285714285714,
+      0.7
+    ],
+    "selectivity_wrong_mean": 0.4485714285714285,
+    "selected_layer_hist": {
+      "0": 12,
+      "33": 3,
+      "11": 2,
+      "2": 1,
+      "35": 1,
+      "9": 1,
+      "27": 1,
+      "17": 1,
+      "8": 1,
+      "29": 1,
+      "3": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 15,
+      "dim_wrong_acc": 0.9857142857142858,
+      "lr_wrong_acc": 0.45714285714285713,
+      "dim_wrong_ci": [
+        0.9571428571428572,
+        1.0
+      ]
+    },
+    "selectivity_pass": true,
+    "ci_excludes_majority": true,
+    "passes_gate0": true
+  },
+  {
+    "task": "Object_Localization",
+    "n": 122,
+    "n_wrong": 57,
+    "majority": 0.5655737704918032,
+    "dim_wrong_acc_mean": 0.2912280701754386,
+    "dim_wrong_acc_std": 0.050360351208446744,
+    "dim_wrong_ci": [
+      0.15789473684210525,
+      0.38596491228070173
+    ],
+    "dim_all_acc_mean": 0.5967213114754097,
+    "lr_wrong_acc_mean": 0.6842105263157896,
+    "lr_wrong_ci": [
+      0.5263157894736842,
+      0.7719298245614035
+    ],
+    "selectivity_wrong_mean": -0.2,
+    "selected_layer_hist": {
+      "33": 7,
+      "31": 6,
+      "32": 3,
+      "34": 2,
+      "2": 1,
+      "27": 1,
+      "12": 1,
+      "0": 1,
+      "28": 1,
+      "26": 1,
+      "10": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 21,
+      "dim_wrong_acc": 0.07017543859649122,
+      "lr_wrong_acc": 0.6140350877192983,
+      "dim_wrong_ci": [
+        0.017543859649122806,
+        0.14035087719298245
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "Relative_Depth",
+    "n": 124,
+    "n_wrong": 36,
+    "majority": 0.5161290322580645,
+    "dim_wrong_acc_mean": 0.0,
+    "dim_wrong_acc_std": 0.0,
+    "dim_wrong_ci": [
+      0.0,
+      0.0
+    ],
+    "dim_all_acc_mean": 0.7096774193548387,
+    "lr_wrong_acc_mean": 0.30000000000000004,
+    "lr_wrong_ci": [
+      0.1388888888888889,
+      0.4166666666666667
+    ],
+    "selectivity_wrong_mean": -0.5166666666666666,
+    "selected_layer_hist": {
+      "0": 25
+    },
+    "fixed_layer_cv": {
+      "layer": 18,
+      "dim_wrong_acc": 0.0,
+      "lr_wrong_acc": 0.4722222222222222,
+      "dim_wrong_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "Relative_Reflectance",
+    "n": 134,
+    "n_wrong": 77,
+    "majority": 0.4253731343283582,
+    "dim_wrong_acc_mean": 0.21298701298701297,
+    "dim_wrong_acc_std": 0.03244154804362804,
+    "dim_wrong_ci": [
+      0.15584415584415584,
+      0.35064935064935066
+    ],
+    "dim_all_acc_mean": 0.3134328358208955,
+    "lr_wrong_acc_mean": 0.3116883116883117,
+    "lr_wrong_ci": [
+      0.16883116883116883,
+      0.36363636363636365
+    ],
+    "selectivity_wrong_mean": -0.13506493506493505,
+    "selected_layer_hist": {
+      "12": 7,
+      "0": 3,
+      "1": 2,
+      "19": 2,
+      "24": 1,
+      "11": 1,
+      "6": 1,
+      "28": 1,
+      "8": 1,
+      "31": 1,
+      "5": 1,
+      "4": 1,
+      "26": 1,
+      "7": 1,
+      "2": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 35,
+      "dim_wrong_acc": 0.16883116883116883,
+      "lr_wrong_acc": 0.35064935064935066,
+      "dim_wrong_ci": [
+        0.09090909090909091,
+        0.2597402597402597
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "Semantic_Correspondence",
+    "n": 139,
+    "n_wrong": 90,
+    "majority": 0.3237410071942446,
+    "dim_wrong_acc_mean": 0.06666666666666667,
+    "dim_wrong_acc_std": 0.012171612389003692,
+    "dim_wrong_ci": [
+      0.022222222222222223,
+      0.12222222222222222
+    ],
+    "dim_all_acc_mean": 0.28057553956834536,
+    "lr_wrong_acc_mean": 0.2111111111111111,
+    "lr_wrong_ci": [
+      0.1111111111111111,
+      0.2777777777777778
+    ],
+    "selectivity_wrong_mean": -0.21777777777777776,
+    "selected_layer_hist": {
+      "22": 5,
+      "0": 4,
+      "11": 2,
+      "24": 2,
+      "16": 1,
+      "31": 1,
+      "13": 1,
+      "27": 1,
+      "8": 1,
+      "21": 1,
+      "2": 1,
+      "3": 1,
+      "19": 1,
+      "6": 1,
+      "33": 1,
+      "20": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 20,
+      "dim_wrong_acc": 0.07777777777777778,
+      "lr_wrong_acc": 0.25555555555555554,
+      "dim_wrong_ci": [
+        0.03333333333333333,
+        0.14444444444444443
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "Spatial_Relation",
+    "n": 143,
+    "n_wrong": 20,
+    "majority": 0.5384615384615384,
+    "dim_wrong_acc_mean": 0.0,
+    "dim_wrong_acc_std": 0.0,
+    "dim_wrong_ci": [
+      0.0,
+      0.0
+    ],
+    "dim_all_acc_mean": 0.848951048951049,
+    "lr_wrong_acc_mean": 0.11000000000000001,
+    "lr_wrong_ci": [
+      0.0,
+      0.15
+    ],
+    "selectivity_wrong_mean": -0.49000000000000005,
+    "selected_layer_hist": {
+      "0": 9,
+      "9": 3,
+      "3": 2,
+      "6": 2,
+      "15": 1,
+      "12": 1,
+      "11": 1,
+      "22": 1,
+      "7": 1,
+      "28": 1,
+      "20": 1,
+      "18": 1,
+      "24": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 28,
+      "dim_wrong_acc": 0.0,
+      "lr_wrong_acc": 0.15,
+      "dim_wrong_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "Visual_Correspondence",
+    "n": 171,
+    "n_wrong": 104,
+    "majority": 0.29239766081871343,
+    "dim_wrong_acc_mean": 0.11538461538461538,
+    "dim_wrong_acc_std": 0.03040651596315749,
+    "dim_wrong_ci": [
+      0.04807692307692308,
+      0.15384615384615385
+    ],
+    "dim_all_acc_mean": 0.38362573099415204,
+    "lr_wrong_acc_mean": 0.21730769230769229,
+    "lr_wrong_ci": [
+      0.15384615384615385,
+      0.3173076923076923
+    ],
+    "selectivity_wrong_mean": -0.16153846153846152,
+    "selected_layer_hist": {
+      "0": 4,
+      "22": 3,
+      "29": 3,
+      "34": 2,
+      "2": 2,
+      "26": 2,
+      "16": 1,
+      "10": 1,
+      "31": 1,
+      "8": 1,
+      "13": 1,
+      "9": 1,
+      "28": 1,
+      "21": 1,
+      "5": 1
+    },
+    "fixed_layer_cv": {
+      "layer": 24,
+      "dim_wrong_acc": 0.16346153846153846,
+      "lr_wrong_acc": 0.23076923076923078,
+      "dim_wrong_ci": [
+        0.09615384615384616,
+        0.2403846153846154
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  },
+  {
+    "task": "Visual_Similarity",
+    "n": 135,
+    "n_wrong": 54,
+    "majority": 0.5259259259259259,
+    "dim_wrong_acc_mean": 0.0,
+    "dim_wrong_acc_std": 0.0,
+    "dim_wrong_ci": [
+      0.0,
+      0.0
+    ],
+    "dim_all_acc_mean": 0.6,
+    "lr_wrong_acc_mean": 0.37037037037037035,
+    "lr_wrong_ci": [
+      0.3148148148148148,
+      0.5740740740740741
+    ],
+    "selectivity_wrong_mean": -0.5333333333333333,
+    "selected_layer_hist": {
+      "0": 25
+    },
+    "fixed_layer_cv": {
+      "layer": 28,
+      "dim_wrong_acc": 0.0,
+      "lr_wrong_acc": 0.5370370370370371,
+      "dim_wrong_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "selectivity_pass": false,
+    "ci_excludes_majority": false,
+    "passes_gate0": false
+  }
+]

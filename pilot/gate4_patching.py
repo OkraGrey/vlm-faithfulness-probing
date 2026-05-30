@@ -28,6 +28,7 @@ Run:   ./env/bin/python gate4_patching.py            (full, ~30 min on Mac)
        ./env/bin/python gate4_patching.py --limit 10 (quick partial run)
 """
 import json
+import os
 import sys
 import time
 from contextlib import contextmanager
@@ -40,7 +41,8 @@ from data_loader import load_blink_samples
 from model_setup import load_model_and_processor, _get_decoder_layers, _format_question
 from answer_parser import parse_answer, is_correct
 
-TASKS = ["Jigsaw", "Multi-view_Reasoning"]
+# Default = the 2 G3-confirmed tasks; override: export CANDIDATE_TASKS="taskA,taskB"
+TASKS = os.environ.get("CANDIDATE_TASKS", "Jigsaw,Multi-view_Reasoning").split(",")
 ALPHAS = [1.0, 2.0, 4.0]
 RANDOM_SEED = 2024
 

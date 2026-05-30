@@ -1,0 +1,34 @@
+[
+  {
+    "task": "Jigsaw",
+    "layer": 8,
+    "dim_wrong_acc": 1.0,
+    "n_wrong": 80,
+    "baseline_reproduces_wrong_rate": 1.0,
+    "flip_rates": {
+      "baseline": 0.0,
+      "steer_a1.0": 0.0125,
+      "steer_a2.0": 0.0,
+      "steer_a4.0": 0.025,
+      "rand_a1.0": 0.0,
+      "rand_a2.0": 0.0,
+      "rand_a4.0": 0.0
+    }
+  },
+  {
+    "task": "Multi-view_Reasoning",
+    "layer": 13,
+    "dim_wrong_acc": 0.9857142857142858,
+    "n_wrong": 70,
+    "baseline_reproduces_wrong_rate": 1.0,
+    "flip_rates": {
+      "baseline": 0.0,
+      "steer_a1.0": 0.014285714285714285,
+      "steer_a2.0": 0.014285714285714285,
+      "steer_a4.0": 0.12857142857142856,
+      "rand_a1.0": 0.014285714285714285,
+      "rand_a2.0": 0.014285714285714285,
+      "rand_a4.0": 0.014285714285714285
+    }
+  }
+]

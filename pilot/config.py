@@ -2,12 +2,16 @@
 
 Change ONE place to swap models, devices, tasks, or sample counts.
 """
+import os
 from pathlib import Path
 import torch
 
 # --- Model ---
-# 3B for Mac; switch to "Qwen/Qwen2.5-VL-7B-Instruct" on a CUDA cluster.
-MODEL_NAME = "Qwen/Qwen2.5-VL-3B-Instruct"
+# 3B is the default. To run 7B WITHOUT editing code (keeps git clean across machines):
+#   export QWEN_MODEL="Qwen/Qwen2.5-VL-7B-Instruct"
+# All scripts read config.MODEL_NAME, and hooks read layer count/dim dynamically,
+# so the same pipeline runs on either model (3B: 36L/2048d, 7B: 28L/3584d).
+MODEL_NAME = os.environ.get("QWEN_MODEL", "Qwen/Qwen2.5-VL-3B-Instruct")
 
 # --- Device ---
 # Auto-select: CUDA > MPS > CPU. fp16 on GPU, fp32 on CPU.
